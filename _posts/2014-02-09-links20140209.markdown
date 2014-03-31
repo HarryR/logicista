@@ -1,0 +1,21 @@
+---
+layout: links
+title: Creative Finds
+date: 2014-02-09 00:00:00
+categories: [links]
+links:
+  - title: thegorgeousdaily.com
+    image: http://media-cache-ak0.pinimg.com/236x/ee/31/36/ee313633176158935950696b9f6038b0.jpg
+    url: http://www.pinterest.com/source/thegorgeousdaily.com/
+  - title: Melodica 10 February 2014 By Chris Coco
+    image: http://www.audbox.com/wp-content/uploads/2012/02/Chris-Coco-Melodica-at-Cafe-Mambo-Ibiza-2011-Sunset-Edition-400x335.jpg
+    url: http://www.mixcloud.com/chriscoco/melodica-10-february-2014/
+  - title: Inspiration
+    image: http://media-cache-ec0.pinimg.com/236x/57/e0/c6/57e0c6ea9a5d9cf3a61d5afa8b6c0d09.jpg
+    url: http://www.pinterest.com/squishymatter/inspiration/
+  - title: Mandelbulb
+    image: http://blog.hvidtfeldts.net/media/chrono2.jpg
+    url: http://blog.hvidtfeldts.net/index.php/category/mandelbulb/
+---
+
+Links

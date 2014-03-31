@@ -1,0 +1,6 @@
+---
+layout: nil
+---
+Sitemap: http://{{site.domain}}/sitemap.xml
+User-agent: *
+Disallow: /css/

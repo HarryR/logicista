@@ -1,0 +1,21 @@
+---
+layout: links
+title: Pattern & Shape
+date: 2014-02-02 00:00:00
+categories: [links]
+links:
+  - title: Violet Orbs of Autumn's Interlude
+    image: http://images-mix.netdna-ssl.com/w/300/h/300/q/85/upload/images/extaudio/6e706b13-9f80-40c9-98c9-b64d6b454b4e.jpg
+    url: http://www.mixcloud.com/poemsounds/violet-orbs-of-autumns-interlude/
+  - title: "Philip Glass: Metamorphosis"
+    image: http://cdn.screenrant.com/wp-content/uploads/inception-ending.jpg
+    url: http://www.youtube.com/watch?v=4qAAPRbRSc0
+  - title: Islamic Geometry
+    image: http://catnaps.org/islamic/islamimages/abdhgrandmos.jpg
+    url: http://catnaps.org/islamic/geometry.html
+  - title: Matt Lyon
+    image: https://lh3.googleusercontent.com/proxy/QCWGQBvB9zUzYwdlYRdF0u91OUQ7yVscfyiIPCQYfPAut1phFwKku40u_DW9lWUHfr96UqmIIusoNTzVOQzUw4vHX5NAb9wfz_Rrv558=w240-h240
+    url: http://www.flickr.com/photos/c86/
+---
+
+Some links

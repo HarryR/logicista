@@ -1,0 +1,49 @@
+---
+layout: default
+index: 'no'
+follow: 'no'
+---
+
+<div class="posts">
+    {% for post in site.posts %}
+        {% if post.layout == 'post' %}
+            <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+                <header class="header">
+                    <a itemprop="url" href="{{ post.url }}">
+                        <img itemprop="image" src="{{ post.coverimage }}" />
+                    </a>
+                    <h2 itemprop="headline">{{ post.title }}</h2>
+                </header><!-- .header -->
+
+                <div class="content">
+                    <span itemprop="description">{{ post.excerpt }}</span>
+
+                    <a class="button" href="{{ post.url }}">Continue Reading &#9656;</a>
+                </div><!-- .content -->
+            </article><!-- .post -->
+        {% elsif post.layout == 'links' %}
+            <article itemscope itemtype="http;//schema.org/WebPageElement" class="links">
+                <h2 itemprop="name">{{ post.title }}</h2>
+                <div>
+                {% for link in post.links %}
+                    <a href="{{ link.url }}" title="{{ link.title }}" target="_blank" style="background-image: url({{link.image}});"></a>
+                {% endfor %}
+                </div>
+                <div class="clear"></div>
+            </article>
+        {% elsif post.layout == 'quote' %}
+            <article class="quote" itemscope itemtype="http;//schema.org/WebPageElement">
+                <span itemprop="text">{{post.content}}</span>
+                {% if post.link %}
+                <a itemprop="creator" href="{{post.link}}" class="author">
+                    &mdash; {{post.author}}
+                </a>
+                {% else %}
+                <div class="author" itemprop="creator">
+                    &mdash; {{post.author}}
+                </div>
+                {% endif %}
+            </article>
+        {% endif %}
+    {% endfor %}
+</div>

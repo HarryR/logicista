@@ -1,0 +1,15 @@
+title: Logicista
+domain: www.logicista.com
+markdown: redcarpet
+pygments: true
+author: Harry Roberts
+excerpt_separator: "\n"
+permalink: /:year/:title
+exclude: [Makefile]
+encoding: UTF-8
+
+jekyll-press:
+  exclude: ['atom.xml','sitemap.xml','robots.txt'] # Exclude files from processing - file name, glob pattern or array of file names and glob patterns
+  js_options: {}      # js minifier options
+  css_options: {}     # css minifier options
+  html_options: {}    # html minifier options

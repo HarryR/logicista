@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="header">
+        <a href="{{ page.url }}">
+            <img itemprop="image" src="{{ page.coverimage }}" alt="{{ page.covertitle }}" />
+        </a>
+        <h1 itemprop="headline">{{ page.title }}</h1>
+    </header><!-- .header -->
+
+    <div class="content" itemprop="articleBody">
+        {{ content }}
+    </div><!-- .content -->
+</article><!-- .post -->
