@@ -1,7 +1,8 @@
 title: Logicista
 domain: www.logicista.com
 markdown: redcarpet
-pygments: true
+highlighter: rogue
+# pygments: true
 author: Harry Roberts
 excerpt_separator: "\n"
 permalink: /:year/:title

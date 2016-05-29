@@ -190,6 +190,13 @@ article.links, article.quote {
 	margin-bottom: 0.5em;
 }
 
+.post h3 {
+	font-weight: bold;
+	margin-top: 20px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #eee;
+}
+
 .post ul, ol {
 	padding-top: 0.7em;
 	padding-left: 1.5em;
@@ -254,11 +261,13 @@ article pre {
 
 article pre code {
 	font-size: 12px !important;
-	background: #fff !important;
 }
 
 /*! Syntax Highlighting */
-.highlight  { background: #ffffff; }
+.highlight  {
+	background: #f5f5f5;
+	overflow: auto;
+}
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
 .highlight .k { font-weight: bold } /* Keyword */
