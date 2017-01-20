@@ -7,7 +7,7 @@ coverimage: /img/posts/flower-macro.jpg
 covertitle: Flower Macro, by [George Hodan](http://www.facebook.com/hodanpictures?ref=hl)
 ---
 
-What's interesting when I come across a new piece of software are how the initial impressions change made after reading the code. If you're looking to setup a new YouTube&reg; style website PHP Melody ranks highly for many search terms, it's convincingly marketed and looks polished even to an expert eye.
+What's interesting when I come across a new piece of software is how the initial impressions change after reading the code. If you're looking to setup a new YouTube&reg; style website, PHP Melody ranks highly for many search terms; it's convincingly marketed and looks polished even to an expert eye.
 
 But what about their claim: **Secure code with 5 years of time-proven reliability**. I wouldn't be so sure about that claim considering the list of exploits below and the general theme of this post!
 
