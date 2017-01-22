@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  PHP Melody - Multiple Vulnerabilities
+title:  PHP Melody 2.7 - Multiple Vulnerabilities
 date:   2017-01-20 00:00:00
-categories: [phpmelody, security, exploit, sql, injection, vulnerability]
+categories: [phpmelody, security, exploit, sql, injection, vulnerability, phpmailer]
 coverimage: /img/posts/flower-macro.jpg
 covertitle: Flower Macro, by [George Hodan](http://www.facebook.com/hodanpictures?ref=hl)
 ---
@@ -17,7 +17,7 @@ But what about their claim: **Secure code with 5 years of time-proven reliabilit
 
 When we audit the source code for an application it's fairly easy to get a feel of how it's been developed, what the potential weak points are going to be, and sometimes it takes just a few minutes to come to the conclusion that there will be an exploit even if it hasn't been found yet. In the industry we call this 'code smell'.
 
-One thing we look at is consistency and the likelyhood for a developer to make mistakes when using the different code patterns or techniques, having worked as a developer for a significant chunk of time the PHP Melody code base instantly struck a chord - it's a consistent mess of potential pitfalls, general bad practices and high chances that security slip-ups will be made.
+One thing we look at is consistency and the likelihood for a developer to make mistakes when using the different code patterns or techniques, having worked as a developer for a significant chunk of time the PHP Melody code base instantly struck a chord - it's a consistent mess of potential pitfalls, general bad practices and high chances that security slip-ups will be made.
 
 
 ## SQL Injection and Inconsistency
@@ -53,7 +53,7 @@ When dealing with this type of code it's only a matter of time and analysis befo
 
 At this point we could have directed [sqlmap](http://sqlmap.org/) at it and let it do its thing, but while the default out-of-the-box install of PHP Melody does allow anonymous comments there is a CAPTCHA, not to mention the last thing we want to do is spam a video with thousands of comments containing SQL injection tests.
 
-Another tool which could have helped detect this vulnerability and reduced the amount of analysis time it took to discoverer is [Phuzz](https://github.com/HarryR/phuzz), an automatic taint-style tracing fuzzer for PHP which highlights where user input is passed to sensitive functions or system calls, however it's still in the early stages of development and doesn't yet allow you to analyse traces from normal web browsing.
+Another tool which could have helped detect this vulnerability and reduced the amount of analysis time it took to discoverer is [Phuzz](https://github.com/HarryR/phuzz), an automatic taint-style tracing fuzzer for PHP which highlights where user input is passed to sensitive functions or system calls, however it's still in the early stages of development and doesn't yet allow you to analyze traces from normal web browsing.
 
 
 ## Leveraging the Initial Vulnerability
@@ -92,9 +92,9 @@ PHP Melody uses two cookies for the auto-login functionality:
  * `melody_XXX` - Username
  * `melody_key_XXX` - Login-key
 
-Where `XXX` is an `MD5` hash of the base URL of the site from `settings.php`, and the login-key is an `MD5` hash of the `password` column from the users table. So even though the `password` column is an `MD5` hash of the password, knowing that alone allows us to login as that user even though the underlying password isnt known.
+Where `XXX` is an `MD5` hash of the base URL of the site from `settings.php`, and the login-key is an `MD5` hash of the `password` column from the users table. So even though the `password` column is an `MD5` hash of the password, knowing that alone allows us to login as that user even though the underlying password isn't known.
 
-Using the SQL injection and a subselect this information can be included at the end of the existing comment without displaying on the site:
+Using the SQL injection and a sub-select this information can be included at the end of the existing comment without displaying on the site:
 
 ```sql
 INSERT INTO pm_comments SET uniq_id = 'ac0266df0', username = 'admin', comment = 'derp', user_ip = '127.0.0.1', added = 1483497600, user_id = '1'
@@ -145,7 +145,7 @@ switch ($action)
 		$mail->IsHTML(false);
 ```
 
-Exploits for PHPMailer ([CVE-2016-10033](https://legalhackers.com/advisories/PHPMailer-Exploit-Remote-Code-Exec-CVE-2016-10033-Vuln.html) and [CVE-2016-10045](https://legalhackers.com/advisories/PHPMailer-Exploit-Remote-Code-Exec-CVE-2016-10045-Vuln-Patch-Bypass.html)) allow command-line arguments to be given to `sendmail` after bypassing escaping and validation in the `From:` address. Two arguments which can be used for exploitation are:
+Exploits for PHPMailer ([CVE-2016-10033](https://legalhackers.com/advisories/PHPMailer-Exploit-Remote-Code-Exec-CVE-2016-10033-Vuln.html) and [CVE-2016-10045](https://legalhackers.com/advisories/PHPMailer-Exploit-Remote-Code-Exec-CVE-2016-10045-Vuln-Patch-Bypass.html)) allow command-line arguments to be given to `sendmail` after bypassing escaping and validation in the `From:` address. Three arguments which can be used for exploitation are:
 
  * `-X` - Write log to arbitrary file, including the Subject and message body
  * `-OAliasFile` - Read aliases from an arbitrary file, perform commands on receipt of a message
@@ -153,7 +153,7 @@ Exploits for PHPMailer ([CVE-2016-10033](https://legalhackers.com/advisories/PHP
 
 The PHPMailer proof-of-concepts rely on controlling the message body to insert PHP code into an arbitrary web accessible file, but to use this in PHP Melody we would have to override the `_SITENAME` variable (configured via 'Site title') - however, stuffing a snippet of PHP code into the title of every page is a dead giveaway as an indicator of compromise even if it's only temporary.
 
-A more novel option for exploitation is possible by uploading a sendmail configuration file instead of an image, the `upload_image.php` admin utility isn't susceptable to any interesting bugs, but it doesn't validate the contents of the file and can be used as such:
+A more novel option for exploitation is possible by uploading a sendmail configuration file instead of an image, the `upload_image.php` admin utility isn't susceptible to any interesting bugs, but it doesn't validate the contents of the file and can be used as such:
 
 ```
 curl -H 'Cookie: melody_..=admin; melody_key_...=...;' \
@@ -194,7 +194,7 @@ If the target is using Postfix, Qmail or a lightweight `sendmail` alternative th
 
 What can we do to prevent this from happening in future? Realistically the developers of PHP Melody will just patch that specific instance of SQL injection and move on while leaving the **Secure code with 5 years of time-proven reliability** claim on their website.
 
-Unless the developers of PHP Melody change their development practices and/or re-code the software using industry standard patterns and frameworks which prevent a wide range of security holes from existing in the first place then the likelyhood of more vulnerabilities being discovered in future is fairly high.
+Unless the developers of PHP Melody change their development practices and/or re-code the software using industry standard patterns and frameworks which prevent a wide range of security holes from existing in the first place, then the likelihood of more vulnerabilities being discovered in future is a near certainty.
 
 What about the people who rely on this software? Deploying a Web Application Firewall, even something free and open-source like mod_security with a good rule-set could provide adequate defence against the initial SQL injection vulnerability.
 
@@ -206,3 +206,6 @@ What about the people who rely on this software? Deploying a Web Application Fir
  
 **Overall CVSS Score: 9.8**
 
+-------------------
+
+[Header image](http://www.publicdomainpictures.net/view-image.php?image=20453&picture=flower-macro) by [George Hodan](https://www.facebook.com/hodanpictures?ref=hl)
