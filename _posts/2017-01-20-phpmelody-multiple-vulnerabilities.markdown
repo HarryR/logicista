@@ -172,7 +172,7 @@ Another problem encountered which could stop any attempts to exploit this bug is
 
 ## Sendmail and Beyond
 
-Now, the fun bit is writing a sendmail configuration file, if you've never encountered this beast before I recommend finding a local Occult bookshop and reading up on human sacrifices and ways to sway evil forces in your favour, the raw configuration format is pedantic and esoteric to say the least.
+Now, the fun bit is writing a sendmail configuration file, if you've never encountered this beast before I recommend finding a local Occult bookshop and reading up on human sacrifices and ways to sway evil forces in your favor, the raw configuration format is pedantic and esoteric to say the least.
 
 Deep within the Sendmail man pages and documentation there's an interesting configuration directive which can execute arbitrary commands on startup, for a while I was concerned that I'd have to write a full `sendmail.cf` file from scratch.
 

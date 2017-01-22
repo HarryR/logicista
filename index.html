@@ -22,7 +22,7 @@ follow: 'no'
                 </div><!-- .content -->
             </article><!-- .post -->
         {% elsif post.layout == 'links' %}
-            <article itemscope itemtype="http;//schema.org/WebPageElement" class="links">
+            <article itemscope itemtype="http://schema.org/WebPageElement" class="links">
                 <h2 itemprop="name">{{ post.title }}</h2>
                 <div>
                 {% for link in post.links %}
@@ -32,7 +32,7 @@ follow: 'no'
                 <div class="clear"></div>
             </article>
         {% elsif post.layout == 'quote' %}
-            <article class="quote" itemscope itemtype="http;//schema.org/WebPageElement">
+            <article class="quote" itemscope itemtype="http://schema.org/WebPageElement">
                 <span itemprop="text">{{post.content}}</span>
                 {% if post.link %}
                 <a itemprop="creator" href="{{post.link}}" class="author">
