@@ -165,7 +165,7 @@ etc. etc. etc.
 
 A really important thing here is the mix of jurisdictions and the protocols surrounding how supporting services are deployed. If a server is physically located in the United States, but the encryption keys for the HDD are held by an Eastern European national, and the server is only ever accessed via Tor... this creates a nightmarish and multi-layered situation for any authorities trying to investigate.
 
-This isn't something which can be accomplished by a 16 year old, on their own, in their parents bedroom, it requires multiple levels of international trust, anonymity and a sincere of everybody involved. If any one person runs the whole system, it creates yet another single point of failure and coersion, so while commercial aspirations may be had - to be truly secure any notions of money making first have to be thrown away as a gesture to the community at large.
+This isn't something which can be accomplished by a 16 year old, on their own, in their parents bedroom, it requires multiple levels of international trust, anonymity and a sincere distrust of everybody involved. If any one person runs the whole system, it creates yet another single point of failure and coersion, so while commercial aspirations may be had - to be truly secure any notions of money making first have to be thrown away as a gesture to the community at large.
 
 
 ## On TripleWeave.js
