@@ -191,16 +191,6 @@ So, what is Triple Weave? The core of the 'weaving mechanism', as I see it, is:
 	},
 ```
 
-Where `string` is the plaintext, and `weaves` is the number of parts that the plaintext will be split into. But... it doesn't work like that, at least not according to the code.
+Where `string` is the plaintext, and `weaves` is the number of parts that the plaintext will be split into. So it makes interleaved strips of characters, for example with 3 'weaves' the first 'weave' will be the 1st, 4th, 7th etc. 
 
-The code doesn't split the string into Nths, it creates N strings, where the Nth number of characters are discarded, for example:
-
-weaves = 3, string = `derp`:
-
- * Weave 1 = `derp`
- * Weave 2 = `erp`
- * Weave 3 = `rp`
-
-And they're all encrypted with the same key...
-
-Ok, whatever, fuck me sideways, maybe this kid is a genius, maybe the people who were judging this competition were high as fuck, maybe pigs grew bloody wings, maybe I'm not actually the motherfucking devil, but what the actual flying motherfucking fuck, in what fucking universe does this even make the smallest bit of sense? Fucking seriously...
+One problem is that each 'weave' will be encrypted with the same encryption key as everything else, maybe I'm missing something here, but it's not giving me confidence in the system.
