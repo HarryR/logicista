@@ -1,6 +1,6 @@
 title: Logicista
 domain: www.logicista.com
-markdown: redcarpet
+markdown: rdiscount
 highlighter: rogue
 # pygments: true
 author: Harry Roberts
