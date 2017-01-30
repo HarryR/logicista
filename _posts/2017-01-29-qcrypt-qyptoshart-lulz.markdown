@@ -91,9 +91,9 @@ Using fairly standard notation, where:
 The algorithm to compute the encryption key between Alice and three Bobs would be:
 
 	Ap, As = KEYPAIR-CREATE()
-	H = S(Ap, B1p)
-	I = S(Ap, B2p)
-	J = S(Ap, B3p)
+	H = S(As, B1p)
+	I = S(As, B2p)
+	J = S(As, B3p)
 	KEY = XOR(H, I, J)
 
 However, in this case, if the Secret component of Alice's key is known an adversary can compute the composite key used to encrypt the data, obviously this is bad because of the single point of failure. If the secret component of Alice's key pair is destroyed, along with the original data, then it's only possible to come to the conclusion that Alice did if all three of the Bobs collude with each other.
