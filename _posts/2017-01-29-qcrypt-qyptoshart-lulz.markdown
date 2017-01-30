@@ -16,7 +16,7 @@ The main driving forces for this investigation are two-fold, one would be the ca
 
 ## What is qCrypt
 
-Well, it's certainly not the [International Conference on Quantum Cryptography](http://2017.qcrypt.net/), although its namesake may have been involved in the inspiration for this project. However, publicly available information I've been able to gather on this crypto is --
+Well, it's certainly not the [International Conference on Quantum Cryptography](http://2017.qcrypt.net/), although its namesake may have been involved in the inspiration for this project. However, the publicly available information I've been able to gather on this crypto is --
 
 High-level:
 
@@ -44,7 +44,11 @@ Source code:
 
 ## Forethought
 
-So, before I start, I should take some wisdom from the Internet Gods and remember that character assassination is never fun for the receiver... to keep things objective and in-context, which in this case seems to be a 16 year old with some very interesting ideas being pushed into the spotlight without necessarily being able to follow through, it may take him another 10 or 20 years to reach the level of intellect and experience associated with ether true-genius or insightful practitioner before he can start really making an impact on the world; but the award is notoriety for what looks like a promising future in the eyes of those who give and seek awards, but recognise that awards aren't necessarily the real world... in fact, some times they are very far from it, and to seek award for the sake of awards will only massage your own ego in a masturbatory fashion; instead, seek truth via science, eschew from seeking notoriety, fame or glory, and let the reward come the satisfaction of recognising how lives are improved after the results of your scientific endeavours have been consumed.
+So, before I start, I should take some wisdom from the Internet Gods and remember that character assassination is never fun for the receiver... to keep things objective and in-context, which in this case seems to be a 16 year old with some very interesting ideas being pushed into the spotlight without necessarily being able to follow through.
+
+It may take him another 10 or 20 years to reach the level of intellect and experience associated with ether true-genius or insightful practitioner before he can start really making an impact on the world; but the award is notoriety for what looks like a promising future in the eyes of those who give and seek awards, and recognise that awards aren't necessarily the real world... in fact, some times they are very far from it.
+
+To seek award for the sake of awards will only massage your own ego; instead, seek truth via science, eschew from seeking notoriety, fame or glory, and let the reward come from the satisfaction of recognising how lives are improved after the results of your scientific endeavours have been consumed.
 
 Indeed, I hope that is what is at the core ethos of what the award givers are trying to do, but unfortunately trophies, crowds and confetti sometimes get the better of us mere mortals.
 
@@ -65,7 +69,7 @@ The threat model that I've constructed and analysed hinges on four things:
 
 In some senses QyptoShart allows you to put encrypted data into an escrow, and by securely destroying the original data *and* the final decryption key you are essentially handing over control of the decryption to an algorithm, and putting trust in multiple third parties in different juristictions to release the final decryption key when certain conditions are met. Ultimately, the protection you gain is through trusting that the third parties won't release their part of the key unless legally necessary, and that by creating a system where multiple parties are involved you gain immunity from any single jurisdiction.
 
-There are, of course, many other aspects which have are part of the threat model, but they are all fairly standard considerations when designing the logic of how a cryptosystem must be used and may be detailed below or upon request.
+There are, of course, many other aspects which are part of the threat model, but they are all fairly standard considerations when designing the logic of how a cryptosystem must be used and may be detailed below or upon request.
 
 
 ### The QyptoShart System
@@ -103,23 +107,23 @@ From my perspective, this is the most obvious system which guarantees the logica
 
 As with RAID-0, if one segment is destroyed the whole becomes corrupt, so if one key-holder becomes unable to recover their keys then all data that they are involved with becomes unrecoverable, given the type of information that one may wish to protect with this type of system it is perfectly reasonable to expect a valid attack to be a denial or omission, to prevent the release of some information only one third-party key-holder would have to be taken out of action.
 
-The problem of data loss isn't anything new, a common solution to this is the Parity Archive system commonly seen on Usenet which allows for a whole set to be recovered from multiple sources as long as N% of pieces from any individual source can be retrieved. A similar scheme could be used to protect against a single party failing to disclose their part of the composite key by deriving an encryption key for every permutation of N-1 key-holders and publishing encrypted segments separately.
+The problem of data loss isn't anything new, a common solution to this is the Parity Archive system frequently seen on Usenet which allows for a whole set to be recovered from multiple sources as long as N% of pieces from any individual source can be retrieved. A similar scheme could be used to protect against a single party failing to disclose their part of the composite key by deriving an encryption key for every permutation of N-1 key-holders and publishing encrypted segments separately.
 
-Another, more general problem, is that QyptoShart only specifies a way of deriving a composite key and then encrypting data, it doesn't cover distribution, or recovery, or key release mechanisms, generally it's completely agnostic until a protocol or implementation decides on specific ways to alleviate those concerns.
+Another more general problem is that QyptoShart only specifies a way of deriving a composite key, distribution, recovery, key release mechanisms are just possibilities until a protocol or implementation decides on the specifics.
 
 
 ## Post-Quantum, herpen derpen derp
 
-Something which came to light while investigating the various repos on young Mr Curran's GitHub account are that it's possible he's decided to use fairly novel and buzzword compliant cryptographic primitives. The two alternatives which are presumably used instead of or in conjunction with Curve25519 are:
+Something which came to light while investigating the various repos on young Mr Curran's GitHub account is that it's possible he's decided to use fairly novel and buzzword compliant cryptographic primitives. The two alternatives which are presumably used instead of or in conjunction with TripleSec are:
 
  * Craig Gentry's Fully Homomorphic Encryption system
  * McEliece cryptosystem
 
 The problem is that I can only infer how these two systems could be used based on their properties without the code which combines them or some form of specification that defines how they are used together, but because how things fit together in the context of cryptographic properties, unless there's a wildly novel and innovative method involved then it's usually just a case of connecting the logical dots and jigsaw pieces.
 
-Presumably instead of `curve25519-xsalsa20-poly1305` to encrypt and authenticate the contents of a box, the asymmetric and supposedly quantum resistent McEliece cryptosystem is used to prevent the plaintext from being recovered from the ciphertext. One of the problems here is that I'm comparing a symmetric encryption and verification system with an asymmetric encryption algorithm. Another problem is that the public key sizes are multiple orders of magnitude higher than anything which is realistically usable, for example it's feasible for McEleice public keys to be in the range of half a megabyte to provide just 80 bits of security, where a comparable cryptosystem from DJB can provide ~126 bits of security with a significantly smaller key.
+Presumably TripleSec is used to encrypt and authenticate the contents of a box, and the asymmetric and supposedly quantum resistent McEliece cryptosystem is used to protect the keys. There is at least one project which uses the McEliece cryptosystem - [Goldbug](http://goldbug.sourceforge.net/), it has been fairly extensively audited in the [Big Seven Crypto Study](https://en.wikibooks.org/wiki/Big_Seven_Crypto_Study) and contains many novel features.
 
-Given that sufficiently capable quantum computers don't really exist yet, should we make a massive trade-off in complexity to protect against the unknown, versus using an alternative that is more widely critiqued, has known limits and provides a comparatively higher level of security in the foreseeable future?
+Given that sufficiently capable quantum computers don't really exist yet, should we make a massive trade-off in complexity to protect against the unknown, versus using an alternative that is more widely critiqued, has known limits and provides a comparatively higher level of security in the foreseeable future? Personally I'm less concerned about the specific algorithms chosen, and more concerned about how they're used and the protocols surrounding their use.
 
 At this point, I'm going to ignore that Mr Curran published the compiled result of [another persons](https://github.com/cyph/mceliece.js) asm.js / Emscriptem wrapper of a [Hybrid Mcliece](https://www.rocq.inria.fr/secret/CBCrypto/index.php?pg=hymes) cryptosystem written in C without properly and fully attributing the original 2 projects... While I routinely espouse deviation from copyright law in the name of a [common albeit slightly retarded good](https://github.com/HarryR/cmd.exe), I rarely, if ever, condone the lack of attribution and credit to original sources, especially so if the original is essentially taken verbatim.
 
@@ -165,7 +169,9 @@ etc. etc. etc.
 
 A really important thing here is the mix of jurisdictions and the protocols surrounding how supporting services are deployed. If a server is physically located in the United States, but the encryption keys for the HDD are held by an Eastern European national, and the server is only ever accessed via Tor... this creates a nightmarish and multi-layered situation for any authorities trying to investigate.
 
-This isn't something which can be accomplished by a 16 year old, on their own, in their parents bedroom, it requires multiple levels of international trust, anonymity and a sincere distrust of everybody involved. If any one person runs the whole system, it creates yet another single point of failure and coersion, so while commercial aspirations may be had - to be truly secure any notions of money making first have to be thrown away as a gesture to the community at large.
+This isn't something which can be easily accomplished by a 16 year old on their own in their bedroom, it requires multiple levels of international trust and a sincere distrust of everybody by everybody. If any one person runs the whole system, it creates yet another single point of failure and coersion, so while commercial aspirations may be had - to be truly secure any notions of money making first have to be thrown away as a gesture to the community at large.
+
+One of the most important concepts in a zero-trust model is to never forget that users also need to be protected from the application developers themselves, and that technical measures or heavily applied cryptography can obscure the real weak points and trust relationships which are more likely to lead to data being compromised.
 
 
 ## On TripleWeave.js
