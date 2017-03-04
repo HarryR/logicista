@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Kopimism and Humanist Ethics
+title:  Kopimism, an Introduction to its Theology
 date:   2017-03-04 00:00:00
 categories: [kopimism, religion, information, corruption, ethics, digital, rights, humanism, law, regulation, theology, sin, morality, divinity, power, control, rights]
 coverimage: /img/posts/moss.jpg
