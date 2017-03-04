@@ -16,7 +16,6 @@
 
         <meta name="robots" content="noodp, noydir, {{page.index}}index, {{page.follow}}follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="stylesheet" href="/css/main.css">
     </head>
@@ -27,8 +26,11 @@
                     {{ content }}
 
                     <footer role="contentinfo">
-                        Copyright &copy; <span itemprop="copyrightYear">{{ site.time | date: "%Y" }}</span> {{site.author}}. All Rights Reserved.<br />
-                        Images used with respect to copyright holders, licensing and fair use.
+                        <a href="http://kopimistsamfundet.se/english/" style="float: left; margin-right: 20px;"><img src="/img/kopimi.png" height="30" alt="Kopimi religious symbol, information is sacred" /></a>
+
+                        Copying is your right, but don't be a dick.
+                        <a href="https://github.com/HarryR/logicista">&copy; <span itemprop="copyrightYear">{{ site.time | date: "%Y" }}</span></a>, <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><br />
+                        Content used with respect to ethics, attribution and fair use.
                     </footer>
                 </div>
             </main>            
