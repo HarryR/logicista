@@ -33,6 +33,8 @@ Originally it was designed to meet the following requirements:
 
 Fairly straightforward, right? For the handshake all I needed to do was take a few of the cryptographic primitives, then with knowledge of their semantics and guarantees carefully devise a series of logical and symbolic operations which when followed resulted in both sides arriving at the same shared key which can then be used to transmit messages to each other using a separate transmission protocol.
 
+![Cryptochannel handshake](/img/posts/cryptochannel-handshake.png)
+
 The handshake can be described using our friends Alice, Mallory and Bob, at the high level:
 
  * Alice wants to connect to Bob
