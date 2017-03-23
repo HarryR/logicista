@@ -136,6 +136,8 @@ Alternatively it might be worth investigating [ProVerif](http://prosecco.gforge.
 
 Anyway, now we have a solution, and more problems.
 
+[Source code available on GitHub](https://gist.github.com/HarryR/5420bac1025250b3a218a8e327d8a3e6)
+
 -------------------
 
 [Header image](http://www.publicdomainpictures.net/view-image.php?image=128184&picture=old-brick-wall) by [Linnaea Mallette](http://www.linnaeamallette.com/)
